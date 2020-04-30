@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           {% for key, value in data.departures.items() %}
-            {% if key == departure %}
+            {% if key in request.path %}
               <li class="nav-item active">
             {% else %}
               <li class="nav-item">

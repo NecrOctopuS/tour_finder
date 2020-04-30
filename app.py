@@ -1,14 +1,17 @@
 from flask import Flask, render_template
 import data
-from data_tools import get_departure_tours, get_base_data, get_tour_data
+from data_tools import get_departure_tours, get_base_data, get_tour_data, get_tours_for_main_page
 
 app = Flask(__name__)
+
+NUMBER_OF_TOURS_ON_MAIN_PAGE = 6
 
 
 @app.route('/')
 def render_main():
     base_data = get_base_data(data)
-    return render_template('index.html', data=base_data, tours=data.tours)
+    tours = get_tours_for_main_page(data, NUMBER_OF_TOURS_ON_MAIN_PAGE)
+    return render_template('index.html', data=base_data, tours=tours)
 
 
 @app.route('/departures/<departure>')

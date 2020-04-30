@@ -3,7 +3,7 @@
 {% block content %}
   <main class="container mt-3">
     <h1 class="display-5 mt-4">Летим {{data.departures.get(departure)}}</h1>
-    <p class="mb-4">Найдено 15 туров, от 26 000 до 84 600 и от 4 ночей до 15 ночей</p>
+    <p class="mb-4">Найдено {{tours|length}} туров, от {{(tours.values()|min(attribute='price')).price}} до {{(tours.values()|max(attribute='price')).price}} и от {{(tours.values()|min(attribute='nights')).nights}} ночей до {{(tours.values()|max(attribute='nights')).nights}} ночей</p>
     <!-- CARDS -->
     <div class="row mt-5">
       {% for id, tour in tours.items() %}

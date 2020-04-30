@@ -23,3 +23,13 @@ def get_tour_data(data, id):
     stars_count = int(tour_data['stars'])
     tour_data['stars'] = '★' * stars_count
     return tour_data
+
+
+def get_tours_for_main_page(data, tours_per_page):
+    tours = {}
+    for id, tour in data.tours.items():
+        if tours_per_page > 0:
+            tours[id] = tour
+            tours_per_page -= 1
+        else:
+            return tours
