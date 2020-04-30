@@ -28,4 +28,5 @@ def render_tour(id):
     return render_template('tour.html', data=base_data, tour=tour)
 
 
-app.run()
+if __name__ == '__main__':
+    app.run()
